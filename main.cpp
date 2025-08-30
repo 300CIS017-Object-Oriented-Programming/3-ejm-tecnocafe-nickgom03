@@ -18,6 +18,7 @@ void mostrarMenuPrincipal()
     cout << "2. Ver resumen del pedido\n";
     cout << "3. Finalizar y pagar\n";
     cout << "4. Prediligenciar productos de demostracion\n";
+    cout << "5. Eliminar producto\n";
     cout << "-1. Salir\n";
     cout << "Seleccione una opcion: ";
 }
@@ -97,6 +98,13 @@ int main()
                 prediligenciarProductosDemo(codigos, cantidades, cantidadItemsRegistrados);
                 break;
             }
+        case 5:
+            {
+                std::cout << "Codigo a eliminar: ";
+                cin.ignore();
+                eliminarProducto(codigos, cantidades, cantidadItemsRegistrados);
+                break;
+        }
 
         case -1:
             {
