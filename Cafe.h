@@ -34,6 +34,8 @@ const int PRECIO_PANDEBONO = 3000;
  */
 const int PRECIO_SANDWICH = 8500;
 
+const int PRECIO_PAPARELLENA = 2500;
+
 // --- Descuentos (% expresado de 0.0 a 1.0) ---
 /**
  * @brief Descuento aplicado a estudiantes (10%).
@@ -44,6 +46,9 @@ const double DESCUENTO_ESTUDIANTE = 0.10;
  * @brief Descuento aplicado a profesores (5%).
  */
 const double DESCUENTO_PROFESOR = 0.05;
+
+
+const double DESCUENTO_VIP = 0.20;
 
 /**
  * @brief Descuento aplicado a visitantes (0%).
@@ -143,5 +148,9 @@ void mostrarResumenPedido(const int codigos[], const int cantidades[], int canti
  * @param cantidadItemsRegistrados Referencia al número de ítems registrados en el pedido.
  */
 void prediligenciarProductosDemo(int codigos[], int cantidades[], int& cantidadItemsRegistrados);
+
+void mostrarProductoMasCaro(const int codigos[], const int cantidades[], int cantidadItemsRegistrados);
+
+void eliminarProducto(int codigos[], int cantidades[], int &n, int codigo);
 
 #endif //CAFE_H

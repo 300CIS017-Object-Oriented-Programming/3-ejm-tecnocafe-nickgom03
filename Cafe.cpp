@@ -13,6 +13,7 @@ void mostrarCartaProductos()
     cout << "2. Cappuccino  $" << PRECIO_CAPPUCCINO << "\n";
     cout << "3. Pandebono   $" << PRECIO_PANDEBONO << "\n";
     cout << "4. Sandwich    $" << PRECIO_SANDWICH << "\n";
+    cout << "5. Papa rellena $" << PRECIO_PAPARELLENA << "\n";
 }
 
 int leerCodigoProducto()
@@ -61,10 +62,12 @@ int obtenerPrecioPorCodigo(int codigoProducto)
         {
             return PRECIO_PANDEBONO;
         }
-    case 4:
-        {
-            return PRECIO_SANDWICH;
-        }
+    case 4: {
+        return PRECIO_SANDWICH;
+    }
+            case 5: {
+        return PRECIO_PAPARELLENA;
+    }
     default:
         {
             return 0;
@@ -190,6 +193,45 @@ void mostrarResumenPedido(const int codigos[], const int cantidades[], int canti
     cout << "Descuento aplicado: " << (porcentajeDescuento * 100) << "%\n";
 }
 
+void mostrarProductoMasCaro(const int codigos[], const int cantidades[], int cantidadItemsRegistrados);
+{
+    if (n == 0) {
+        std::cout <<"No hay productos por el momento"<<endl;
+        return;
+    }
+    double precioMax = 0;
+    int idxMax = 0;
+    for (int i = 0; i < cantidadItemsRegistrados; i++) {
+        double precioActual = obtenerPrecioPorCodigo(codigos[i]);
+        if (precioActual > precioMax) {
+            precioMax = precioActual;
+            idxMax = i;
+        }
+    }
+
+    std::cout << "Producto mas caro: " << obtenerNombreProducto(idxMax) << "Precio: " << precioMax <<"Cantidad: " << cantidades[idxMax] << std::endl;
+
+}
+
+void eliminarProducto(int codigos[], int cantidades[], int &n, int codigo);
+{
+    int pos = -1;
+    for (int i = 0; i < n; i++) {
+        if (codigos[i] == codigos[pos]) {
+            pos = i;
+        }
+    }
+    if (pos == -1) {
+        std::cout <<"El codigo " << codigo << " no esta.\n";
+        return;
+    }
+
+    for (int i = pos; i < n - 1; i++) {
+        codigos[i] = codigos[i + 1];
+        cantidades[i + 1] = cantidades[i];
+    }
+}
+
 void prediligenciarProductosDemo(int codigos[], int cantidades[], int & cantidadItemsRegistrados)
 {
     // Limpiar pedido actual si existe
@@ -211,4 +253,6 @@ void prediligenciarProductosDemo(int codigos[], int cantidades[], int & cantidad
     cout << "- 2 Tintos\n";
     cout << "- 3 Pandebonos\n";
     cout << "- 1 Sándwich\n\n";
+    cout << "- 4 Empanadas\n";
+    cout << "- 2 Papa Rellena\n";
 }
